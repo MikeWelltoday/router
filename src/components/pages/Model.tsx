@@ -9,8 +9,7 @@ type SuperPagePropsType = {
 export const Model: FC<SuperPagePropsType> = (props) => {
 
     const params = useParams()
-
-    const char = props.data[Number(params.id) - 1]
+    const char = props.data.filter(item => item.id === params.id)[0]
 
     return (
         char ?
