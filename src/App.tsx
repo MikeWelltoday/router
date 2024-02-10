@@ -1,51 +1,52 @@
 import React from 'react'
-import {Navigate, NavLink, Route, Routes} from 'react-router-dom'
-import {Error404} from './components/pages/Error404'
-import {Adidas, adidasArr} from './components/pages/Adidas'
-import {Puma} from './components/pages/Puma'
-import {Abibas} from './components/pages/Abibas'
+import './App.css'
+import {Link, NavLink, Outlet, useNavigate} from 'react-router-dom'
 import styles from './components/Site.module.css'
-import {S} from './components/pages/_styles'
-import {Model} from './components/pages/Model'
-
-
-export const PATH = {
-    PAGE1: '/adidas',
-    PAGE2: '/puma',
-    PAGE3: '/abibas'
-} as const
-
+import {S} from './components/pages/__styles'
+import {checker, useWindowSize} from './hooks_OR_helpers/useWindowSize'
 
 function App() {
 
+    // BACK BUTTON
+    const navigate = useNavigate()
+
+    function onClickHandler() {
+        navigate(-1)
+    }
+
+    const windowSize = useWindowSize()
+
+    checker()
+
+
     return (
         <div>
-            <div className={styles.header}><h1>HEADER</h1></div>
-            <div className={styles.body}>
-                <div className={styles.nav}>
-                    <S.NavWrapper><NavLink to={PATH.PAGE1}>Page1</NavLink></S.NavWrapper>
-                    <S.NavWrapper><NavLink to={PATH.PAGE2}>Page2</NavLink></S.NavWrapper>
-                    <S.NavWrapper><NavLink to={PATH.PAGE3}>Page3</NavLink></S.NavWrapper>
+            <div>
+                <div className={styles.header}><h1>HEADER</h1></div>
+                <div className={styles.body}>
+                    {!(windowSize < 1000) ?
+                        <div className={styles.nav}>
+                            <S.NavWrapper><NavLink to={'/page/0'}>Page1</NavLink></S.NavWrapper>
+                            <S.NavWrapper><NavLink to={'/page/1'}>Page2</NavLink></S.NavWrapper>
+                            <S.NavWrapper><NavLink to={'/page/2'}>Page3</NavLink></S.NavWrapper>
+                        </div>
+                        :
+                        <div>NO</div>}
+
+                    <div className={styles.content}>
+                        <Outlet/>
+                    </div>
                 </div>
-                <div className={styles.content}>
-                    <Routes>
-                        <Route path={'/'} element={<Navigate to={'/page1'}/>}/>
 
-                        <Route path={PATH.PAGE1} element={<Adidas/>}/>
-                        <Route path={PATH.PAGE2} element={<Puma/>}/>
-                        <Route path={PATH.PAGE3} element={<Abibas/>}/>
+                {/* кнопка возварата */}
+                <Link className={styles.buttonLink} to={'/page/0'}>ГЛАВНАЯ СТРАНИЦА</Link>
 
-                        <Route path={PATH.PAGE1 + '/:id'} element={<Model data={adidasArr}/>}/>
+                {/*  BACK  */}
+                <button className={styles.buttonLink} onClick={onClickHandler}>НАЗАД</button>
 
-                        <Route path={'/error4'} element={<Error404/>}/>
-                        <Route path={'/*'} element={<Error404/>}/>
-                    </Routes>
-                </div>
             </div>
-            <div className={styles.footer}>abibas 2023</div>
         </div>
     )
 }
 
 export default App
-
