@@ -1,10 +1,9 @@
 import React from 'react';
 
-export const PageThree = () => {
+export const Keyboard = () => {
     return (
         <div>
-            PageThree
+            Keyboard
         </div>
     );
 };
-

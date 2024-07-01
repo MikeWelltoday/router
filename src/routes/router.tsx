@@ -1,46 +1,74 @@
-import App from '../App'
-import {Error404} from '../components/pages/Error404'
-import {Page} from '../components/pages/Page'
-import {dataState} from '../data/dataState'
-import {ProtectedRoute} from '../components/pages/ProtectedRoute'
-import {PageInPage} from '../components/pages/PageInPage'
+import {createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider} from 'react-router-dom'
 
-import {createBrowserRouter} from 'react-router-dom'
+import {Error404, MainPage, Puma, Adidas, Abibas, Prices, Secret, Model} from "pages";
+import {Suspense} from "react";
 
-import {Protected} from '../components/pages/Protected'
+export const PATH = {
+    MAIN: '/',
+    ADIDAS: '/adidas',
+    PUMA: '/puma',
+    ABIBAS: '/abibas',
+    PRICES: '/prices',
+    SECRET: '/secret',
+    ERROR: '/error',
+    MODEl: '/:model/:id'
+} as const
 
-// в массиве будут создаваться объекты
-// 1 объект = 1 роуту
+const publicRoutes: RouteObject[] = [
+    {
+        element: <Adidas/>,
+        path: PATH.ADIDAS,
+    },
+    {
+
+        element: <Suspense fallback={<div>...Loading</div>}> <Puma/></Suspense>,
+        path: PATH.PUMA,
+    },
+    {
+        element: <Abibas/>,
+        path: PATH.ABIBAS,
+    },
+    {
+        element: <Prices/>,
+        path: PATH.PRICES,
+    },
+    {
+        element: <Model/>,
+        path: PATH.MODEl,
+    }
+]
+
+const privateRoutes: RouteObject[] = [
+    {
+        element: <Secret/>,
+        path: PATH.SECRET
+    }
+]
+
 export const router = createBrowserRouter([
     {
-        path: '/',
-        element: <App/>,
+        element: <MainPage/>,
         errorElement: <Error404/>,
-        // то что меняется храниться в children,
-        // в App помещяется в <Outlet/>
         children: [
+            ...publicRoutes,
             {
-                path: '/page/:id',
-                element: <Page pages={dataState.pages}/>
+                children: privateRoutes,
+                element: <PrivateRoutes/>
             },
             {
-                // protectedRoute - защита от постароненного входа
-                path: '/page/protected',
-                element: (
-                    <ProtectedRoute>
-                        <Protected/>
-                    </ProtectedRoute>
-                )
+                element: <Navigate replace to={PATH.ADIDAS}/>,
+                path: PATH.MAIN
             },
-            {
-                path: '/page/error',
-                element: <Error404/>
-            },
-            {
-                path: '/page/:id/pip',
-                element: <PageInPage/>
-            }
         ]
     }
 ])
+
+export function Router() {
+    return <RouterProvider router={router}/>
+}
+
+function PrivateRoutes() {
+    const isAuthenticated = false
+    return isAuthenticated ? <Outlet/> : <Navigate to={PATH.MAIN}/>
+}
 

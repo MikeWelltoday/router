@@ -1,0 +1,24 @@
+.navigation {
+    background-color: white;
+    color: #282c34;
+    padding: 30px;
+}
+
+.navWrapper {
+    margin-left: 10px;
+    font-size: 40px;
+}
+
+.navWrapper a {
+    text-decoration: none;
+    color: #1e3786;
+}
+
+.activeLink {
+    text-decoration: none;
+    background-color: yellow;
+}
+
+.navWrapper a:hover {
+    color: steelblue;
+}

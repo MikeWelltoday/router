@@ -1,53 +1,47 @@
+.main {
+    display: flex;
+    flex-flow: column nowrap;
+    height: 100vh;
+}
+
 .header {
     background-color: lightseagreen;
     width: 100%;
-    height: 100px;
+    padding: 20px 0;
     text-align: center;
     color: white;
 }
 
-.body {
+.wrapper {
     display: flex;
-
+    flex-flow: row nowrap;
+    flex-grow: 1;
 }
 
-.nav {
-    background-color: white;
-    height: 500px;
-    width: 30%;
-    color: #282c34;
-    font-size: 30px;
-
+.body {
+    display: flex;
 }
 
 .content {
     background-color: #282c34;
-    height: 500px;
     width: 100%;
     color: white;
     font-size: 30px;
 }
 
-.navLink {
-    text-decoration: none;
-    color: #282c34;
-}
 
-.nav a.active {
-    color: #7fb8f1;
-    text-decoration: underline;
-}
-
-.buttonLink {
+.btn {
     margin: 10px;
-    display: inline-block;
-    padding: 5px 10px;
+    text-align: center;
+    align-self: center;
+    display: block;
+    padding: 10px 20px;
     background-color: #007bff;
     color: #fff;
     text-decoration: none;
     border-radius: 5px;
 }
 
-.buttonLink:hover {
+.btn:hover {
     background-color: #0056b3;
 }

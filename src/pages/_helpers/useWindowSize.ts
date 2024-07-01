@@ -26,7 +26,7 @@ export function useWindowSize() {
  */
 
 export function checker() {
-    console.log(123)
+    console.log('слушает значение ширины экрана')
 }
 
 

@@ -1,0 +1,84 @@
+html {
+    box-sizing: border-box;
+    font-size: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+
+    font-family: sans-serif;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+}
+
+input,
+button,
+select,
+textarea,
+optgroup,
+option {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: inherit;
+    font-style: inherit;
+    color: inherit;
+}
+
+/*
+a:visited {
+  color: inherit;
+}
+ */
+
+body {
+    overflow-x: hidden;
+
+    min-width: 360px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+
+    border: 0;
+}
+
+
+img {
+    vertical-align: top;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a,
+a:hover,
+a:active {
+    cursor: pointer;
+    text-decoration: none;
+}
+
+a:visited {
+    color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: inherit;
+    font-weight: inherit;
+}
+
+button {
+    cursor: pointer;
+    background-color: unset;
+    border: none;
+}
+

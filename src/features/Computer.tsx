@@ -1,10 +1,9 @@
 import React from 'react';
 
-export const PageOne = () => {
+export const Computer = () => {
     return (
         <div>
-            PageOne
+            Computer
         </div>
     );
 };
-

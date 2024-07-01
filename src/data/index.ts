@@ -1,0 +1,1 @@
+export {showData} from './showData'

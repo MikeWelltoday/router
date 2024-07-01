@@ -1,10 +1,9 @@
 import React from 'react';
 
-export const PageTwo = () => {
+export const Abibas = () => {
     return (
         <div>
-            PageTwo
+            Abibas
         </div>
     );
 };
-
