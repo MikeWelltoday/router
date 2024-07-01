@@ -1,5 +1,5 @@
 export const showData = [
-    {id: 'computer', model: 'computer', price: '100', color: 'red'},
-    {id: 'keyboard', model: 'keyboard', price: '100', color: 'green'},
-    {id: 'mouse', model: 'mouse', price: '100', color: 'blue'},
+    {id: '1', model: 'computer', price: '100', color: 'red'},
+    {id: '2', model: 'keyboard', price: '100', color: 'green'},
+    {id: '3', model: 'mouse', price: '100', color: 'blue'},
 ]

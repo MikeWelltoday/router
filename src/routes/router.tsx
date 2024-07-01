@@ -1,17 +1,16 @@
 import {createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider} from 'react-router-dom'
 
-import {Error404, MainPage, Puma, Adidas, Abibas, Prices, Secret, Model} from "pages";
+import {Adidas, Error404, MainPage, Model, Prices, Puma, Secret} from "pages";
 import {Suspense} from "react";
 
 export const PATH = {
     MAIN: '/',
     ADIDAS: '/adidas',
     PUMA: '/puma',
-    ABIBAS: '/abibas',
     PRICES: '/prices',
     SECRET: '/secret',
     ERROR: '/error',
-    MODEl: '/:model/:id'
+    MODEl: '/model/:model/:id'
 } as const
 
 const publicRoutes: RouteObject[] = [
@@ -23,10 +22,6 @@ const publicRoutes: RouteObject[] = [
 
         element: <Suspense fallback={<div>...Loading</div>}> <Puma/></Suspense>,
         path: PATH.PUMA,
-    },
-    {
-        element: <Abibas/>,
-        path: PATH.ABIBAS,
     },
     {
         element: <Prices/>,

@@ -16,9 +16,6 @@ export const Navigation = () => {
                 <NavLink to={PATH.PUMA} className={({isActive}) => isActive ? s.activeLink : ''}>Puma</NavLink>
             </div>
             <div className={s.navWrapper}>
-                <NavLink to={PATH.ABIBAS} className={({isActive}) => isActive ? s.activeLink : ''}>Abibas</NavLink>
-            </div>
-            <div className={s.navWrapper}>
                 <NavLink to={PATH.PRICES} className={({isActive}) => isActive ? s.activeLink : ''}>Prices</NavLink>
             </div>
             <div className={s.navWrapper}>
