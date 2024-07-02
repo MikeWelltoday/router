@@ -1,6 +1,6 @@
 import {createBrowserRouter, Navigate, Outlet, RouteObject, RouterProvider} from 'react-router-dom'
 
-import {Adidas, Error404, MainPage, Model, Prices, Puma, Secret} from "pages";
+import {Adidas, Error404, Login, MainPage, Model, Prices, Puma, Secret} from "pages";
 import {Suspense} from "react";
 
 export const PATH = {
@@ -10,7 +10,8 @@ export const PATH = {
     PRICES: '/prices',
     SECRET: '/secret',
     ERROR: '/error',
-    MODEl: '/model/:model/:id'
+    MODEl: '/model/:model/:id',
+    LOGIN: '/login',
 } as const
 
 const publicRoutes: RouteObject[] = [
@@ -30,6 +31,15 @@ const publicRoutes: RouteObject[] = [
     {
         element: <Model/>,
         path: PATH.MODEl,
+    },
+    {
+        element: <Login/>,
+        path: PATH.LOGIN
+    }
+    ,
+    {
+        element: <Error404/>,
+        path: PATH.ERROR
     }
 ]
 
@@ -43,7 +53,7 @@ const privateRoutes: RouteObject[] = [
 export const router = createBrowserRouter([
     {
         element: <MainPage/>,
-        errorElement: <Error404/>,
+        errorElement: <Navigate to={PATH.ERROR}/>,
         children: [
             ...publicRoutes,
             {
@@ -64,6 +74,6 @@ export function Router() {
 
 function PrivateRoutes() {
     const isAuthenticated = false
-    return isAuthenticated ? <Outlet/> : <Navigate to={PATH.MAIN}/>
+    return isAuthenticated ? <Outlet/> : <Navigate to={PATH.LOGIN}/>
 }
 

@@ -13,6 +13,8 @@ export const MainPage = () => {
 
     const navigate = useNavigate()
 
+    const navigateHandler = () => navigate(-1)
+
     const windowSize = useWindowSize()
     checker()
 
@@ -25,7 +27,7 @@ export const MainPage = () => {
             </div>
 
             <Link className={s.btn} to={PATH.MAIN}>ГЛАВНАЯ СТРАНИЦА</Link>
-            <button className={s.btn} onClick={() => navigate(-1)}>НАЗАД</button>
+            <button className={s.btn} onClick={navigateHandler}>НАЗАД</button>
         </div>
     )
 }
